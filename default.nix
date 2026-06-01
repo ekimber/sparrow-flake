@@ -12,7 +12,12 @@
   fontconfig,
   freetype,
   libffi,
-  xorg,
+  libx11,
+  libxext,
+  libxi,
+  libxrender,
+  libxtst,
+  libxxf86vm,
   zlib,
   cups,
   cairo,
@@ -46,7 +51,7 @@ let
     ."${stdenvNoCC.hostPlatform.system}";
 
   sparrow-unwrapped = stdenvNoCC.mkDerivation rec {
-    version = "2.4.2";
+    version = "2.5.2";
     pname = "sparrow-unwrapped";
     nativeBuildInputs = [
       copyDesktopItems
@@ -60,7 +65,7 @@ let
       url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrowwallet-${version}-${sparrowArch}.tar.gz";
       hash =
         {
-          x86_64-linux = "sha256-BvtQZ+b+Hj+9eBdLg/KfYUeRQth0LWwwbZUQMfyTayE=";
+          x86_64-linux = "sha256-jDvUNaA/g/iyzdbbetlydBz9fFeHmvL8IQNVOi0JGMA=";
           aarch64-linux = "sha256-5bVfkbGDlWGFJeRHmDOy8YD45Iex+NmWh9Uoequ6AxI=";
         }
         ."${stdenvNoCC.hostPlatform.system}";
@@ -78,11 +83,11 @@ let
       let
         manifest = fetchurl {
           url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrow-${version}-manifest.txt";
-          hash = "sha256-cv/bkUZArASgWjgEphdWc6p8R9uOOkT+Idc53sjEOQ0=";
+          hash = "sha256-g9y41Cuk4g8qy9TV0VyDwISzWZa9F8zyRpjvopHXYLM=";
         };
         manifestSignature = fetchurl {
           url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrow-${version}-manifest.txt.asc";
-          hash = "sha256-lIamtUX45HVTrUJKbiGsFkRanM17KaZS0NwlTAoptEE=";
+          hash = "sha256-PNuyEGkHj3lIoLmw6egXt9/sqO/21WqkbyCZLKx/2qQ=";
         };
         publicKey = ./publickey.asc;
       in
@@ -154,12 +159,12 @@ buildFHSEnv {
     fontconfig
     freetype
     libffi
-    xorg.libX11
-    xorg.libXext
-    xorg.libXi
-    xorg.libXrender
-    xorg.libXtst
-    xorg.libXxf86vm
+    libx11
+    libxext
+    libxi
+    libxrender
+    libxtst
+    libxxf86vm
     zlib
     cups
     cairo
