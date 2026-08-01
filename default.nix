@@ -51,7 +51,7 @@ let
     ."${stdenvNoCC.hostPlatform.system}";
 
   sparrow-unwrapped = stdenvNoCC.mkDerivation rec {
-    version = "2.5.2";
+    version = "2.5.3";
     pname = "sparrow-unwrapped";
     nativeBuildInputs = [
       copyDesktopItems
@@ -65,7 +65,7 @@ let
       url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrowwallet-${version}-${sparrowArch}.tar.gz";
       hash =
         {
-          x86_64-linux = "sha256-jDvUNaA/g/iyzdbbetlydBz9fFeHmvL8IQNVOi0JGMA=";
+          x86_64-linux = "sha256-xRtMh8nYHzjMyb8zSPQZNIbcfQIuKk4izfPW/PLK2zg=";
           aarch64-linux = "sha256-5bVfkbGDlWGFJeRHmDOy8YD45Iex+NmWh9Uoequ6AxI=";
         }
         ."${stdenvNoCC.hostPlatform.system}";
@@ -83,11 +83,11 @@ let
       let
         manifest = fetchurl {
           url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrow-${version}-manifest.txt";
-          hash = "sha256-g9y41Cuk4g8qy9TV0VyDwISzWZa9F8zyRpjvopHXYLM=";
+          hash = "sha256-oVR5lJOWHTyEe+fBbxa+ZPh9GERHlZbZMPmaGImmdhg=";
         };
         manifestSignature = fetchurl {
           url = "https://github.com/sparrowwallet/sparrow/releases/download/${version}/sparrow-${version}-manifest.txt.asc";
-          hash = "sha256-PNuyEGkHj3lIoLmw6egXt9/sqO/21WqkbyCZLKx/2qQ=";
+          hash = "sha256-9ohRv/3rcOr78Mr0Bfny9zn+SqpLFaf0hn9G2LMAc8Q=";
         };
         publicKey = ./publickey.asc;
       in
